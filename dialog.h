@@ -77,7 +77,7 @@ private:
     int numMotors;                      // number of motors
 
     // config
-    QString configPath = ".\\test.ini"; // config file path
+    QString configPath = ".\\setting.ini"; // config file path
 
     // visiable flag
     int serverEnabled;

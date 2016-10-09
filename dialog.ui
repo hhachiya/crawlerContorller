@@ -864,7 +864,6 @@
      <height>480</height>
     </rect>
    </property>
-   <zorder>viewfinder</zorder>
   </widget>
   <widget class="QCameraViewfinder" name="viewfinder" native="true">
    <property name="geometry">
@@ -885,8 +884,13 @@
      <height>151</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="driverConnectTab">
     <attribute name="title">
@@ -895,8 +899,8 @@
     <widget class="QComboBox" name="serialComboBox">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>20</y>
+       <x>120</x>
+       <y>50</y>
        <width>81</width>
        <height>22</height>
       </rect>
@@ -910,11 +914,16 @@
     <widget class="QLabel" name="controlDriverPortLabel">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>20</y>
+       <x>40</x>
+       <y>50</y>
        <width>101</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;制御用ポート：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -926,11 +935,16 @@
     <widget class="QPushButton" name="connectDevicePB">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>20</y>
+       <x>210</x>
+       <y>50</y>
        <width>51</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>接続</string>
@@ -939,15 +953,15 @@
     <widget class="QPushButton" name="disconnectPB">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>20</y>
+       <x>210</x>
+       <y>50</y>
        <width>51</width>
        <height>23</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">
@@ -962,14 +976,19 @@
     <widget class="QLabel" name="ipAddrLabel">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>0</y>
+       <x>30</x>
+       <y>10</y>
        <width>71</width>
        <height>24</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;IPアドレス：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;IPアドレス：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -978,8 +997,8 @@
     <widget class="QTextBrowser" name="ipAddrText">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>0</y>
+       <x>110</x>
+       <y>10</y>
        <width>101</width>
        <height>25</height>
       </rect>
@@ -993,14 +1012,19 @@
     <widget class="QLabel" name="controlPortLabel">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>27</y>
+       <x>30</x>
+       <y>51</y>
        <width>101</width>
        <height>24</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;制御用ポート：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;制御用ポート：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1009,8 +1033,8 @@
     <widget class="QTextBrowser" name="controlPortText">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>26</y>
+       <x>110</x>
+       <y>50</y>
        <width>51</width>
        <height>25</height>
       </rect>
@@ -1024,14 +1048,19 @@
     <widget class="QLabel" name="videoPortLabel">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>50</y>
+       <x>30</x>
+       <y>90</y>
        <width>101</width>
        <height>24</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ビデオ用ポート：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ビデオ用ポート：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1040,8 +1069,8 @@
     <widget class="QTextBrowser" name="videoPortText">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>50</y>
+       <x>110</x>
+       <y>90</y>
        <width>51</width>
        <height>25</height>
       </rect>
@@ -1055,11 +1084,16 @@
     <widget class="QPushButton" name="connectServerPB">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>30</y>
+       <x>240</x>
+       <y>50</y>
        <width>51</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>接続</string>
@@ -1073,14 +1107,19 @@
     <widget class="QLabel" name="joyXLabel">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>30</x>
        <y>60</y>
        <width>50</width>
        <height>24</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;X位置：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;X位置：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1089,7 +1128,7 @@
     <widget class="QTextBrowser" name="joyXText">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>80</x>
        <y>60</y>
        <width>80</width>
        <height>25</height>
@@ -1104,14 +1143,19 @@
     <widget class="QLabel" name="joyYLabel">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>30</x>
        <y>90</y>
        <width>50</width>
        <height>23</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Y位置：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Y位置：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1120,7 +1164,7 @@
     <widget class="QTextBrowser" name="joyYText">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>80</x>
        <y>90</y>
        <width>80</width>
        <height>25</height>
@@ -1135,14 +1179,19 @@
     <widget class="QLabel" name="joyZLabel">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>170</x>
        <y>60</y>
        <width>50</width>
        <height>24</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Z位置：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Z位置：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1151,7 +1200,7 @@
     <widget class="QTextBrowser" name="joyZText">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>220</x>
        <y>60</y>
        <width>80</width>
        <height>25</height>
@@ -1166,14 +1215,19 @@
     <widget class="QLabel" name="joyRlabel">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>170</x>
        <y>90</y>
        <width>50</width>
        <height>23</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;R位置：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;R位置：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1182,7 +1236,7 @@
     <widget class="QTextBrowser" name="joyRText">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>220</x>
        <y>90</y>
        <width>80</width>
        <height>25</height>
@@ -1197,8 +1251,8 @@
     <widget class="QComboBox" name="joyComboBox">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>10</y>
+       <x>160</x>
+       <y>20</y>
        <width>91</width>
        <height>22</height>
       </rect>
@@ -1207,14 +1261,19 @@
     <widget class="QLabel" name="joyXLabel_2">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>10</y>
-       <width>101</width>
+       <x>40</x>
+       <y>20</y>
+       <width>111</width>
        <height>24</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ジョイスティックポート：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ジョイスティックポート：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1228,8 +1287,8 @@
     <widget class="QComboBox" name="joyComboBox_2">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>20</y>
+       <x>130</x>
+       <y>50</y>
        <width>91</width>
        <height>22</height>
       </rect>
@@ -1238,14 +1297,14 @@
     <widget class="QLabel" name="joyXLabel_3">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>20</y>
+       <x>50</x>
+       <y>50</y>
        <width>101</width>
        <height>24</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;カメラポート：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;カメラポート：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
