@@ -16,10 +16,10 @@
   <widget class="QGroupBox" name="motorGB">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>180</y>
      <width>331</width>
-     <height>341</height>
+     <height>391</height>
     </rect>
    </property>
    <property name="font">
@@ -28,13 +28,13 @@
     </font>
    </property>
    <property name="title">
-    <string>モータの情報</string>
+    <string>クローラーの情報</string>
    </property>
    <widget class="QGroupBox" name="leftMotorGB">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>30</y>
+      <x>10</x>
+      <y>90</y>
       <width>101</width>
       <height>141</height>
      </rect>
@@ -189,8 +189,8 @@
    <widget class="QPushButton" name="motorChangePB">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>70</y>
+      <x>250</x>
+      <y>130</y>
       <width>51</width>
       <height>23</height>
      </rect>
@@ -202,8 +202,8 @@
    <widget class="QGroupBox" name="rightMotorGB">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>30</y>
+      <x>120</x>
+      <y>90</y>
       <width>101</width>
       <height>141</height>
      </rect>
@@ -358,8 +358,8 @@
    <widget class="QGroupBox" name="indi2MotorGB">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>180</y>
+      <x>120</x>
+      <y>240</y>
       <width>101</width>
       <height>141</height>
      </rect>
@@ -514,8 +514,8 @@
    <widget class="QGroupBox" name="indi1MotorGB">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>180</y>
+      <x>10</x>
+      <y>240</y>
       <width>101</width>
       <height>141</height>
      </rect>
@@ -670,8 +670,8 @@
    <widget class="QPushButton" name="motorResetPB">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>100</y>
+      <x>250</x>
+      <y>160</y>
       <width>51</width>
       <height>23</height>
      </rect>
@@ -683,8 +683,8 @@
    <widget class="QGroupBox" name="activeMotorGB">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>180</y>
+      <x>240</x>
+      <y>240</y>
       <width>91</width>
       <height>141</height>
      </rect>
@@ -854,6 +854,49 @@
      </property>
     </widget>
    </widget>
+   <widget class="QGroupBox" name="connectState">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>291</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>接続状態</string>
+    </property>
+    <widget class="QTextBrowser" name="connectStateText">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>25</y>
+       <width>221</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QWidget" name="connectIndi" native="true">
+     <property name="geometry">
+      <rect>
+       <x>22</x>
+       <y>24</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QWebEngineView" name="webView" native="true">
    <property name="geometry">
@@ -878,7 +921,7 @@
   <widget class="QTabWidget" name="connectTab">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>20</y>
      <width>341</width>
      <height>151</height>
@@ -890,7 +933,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="driverConnectTab">
     <attribute name="title">
@@ -950,7 +993,7 @@
       <string>接続</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="disconnectPB">
+    <widget class="QPushButton" name="disconnectDevicePB">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -1097,6 +1140,24 @@
      </property>
      <property name="text">
       <string>接続</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="disconnectServerPB">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>50</y>
+       <width>51</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>停止</string>
      </property>
     </widget>
    </widget>

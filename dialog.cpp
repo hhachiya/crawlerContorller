@@ -95,7 +95,10 @@ Dialog::Dialog(QWidget *parent) :
     //----------------------
 
     // disable disconnect button
-    ui->disconnectPB->setVisible(false);
+    ui->disconnectDevicePB->setVisible(false);
+    ui->disconnectServerPB->setVisible(false);
+
+    ui->connectIndi->setStyleSheet("background-color:gray;");
 
 }
 
@@ -364,18 +367,6 @@ void Dialog::displayMotorIDs()
 }
 
 
-void Dialog::on_disconnectPB_clicked()
-{
-    // stop joystick thread
-    myJoyThread.stop();
-
-    // enable connect buttons
-    ui->connectDevicePB->setVisible(true);
-    ui->connectServerPB->setVisible(true);
-
-    // disable disconnect button
-    ui->disconnectPB->setVisible(false);
-}
 
 void Dialog::on_connectServerPB_clicked()
 {
@@ -400,8 +391,7 @@ void Dialog::on_connectServerPB_clicked()
         //----------------------
 
         // enable disconnect button and disable connect buttons
-        ui->disconnectPB->setVisible(true);
-        ui->connectDevicePB->setVisible(false);
+        ui->disconnectServerPB->setVisible(true);
         ui->connectServerPB->setVisible(false);
     }
 
@@ -420,6 +410,7 @@ void Dialog::on_connectDevicePB_clicked()
     if (status != RQ_SUCCESS)
     {
         qDebug("Error connecting to device: %d.\n",status);
+        ui->connectStateText->setText(QString("Error connecting to driver:").append(QString::number(status)));
     }else{
         // stop joystick thread
         if(myJoyThread.isRunning())
@@ -429,12 +420,42 @@ void Dialog::on_connectDevicePB_clicked()
         myJoyThread.startDeviceJoyThread(ui->joyComboBox->currentIndex(),roboteqDevice,leftMotorList,rightMotorList,indi1MotorList,indi2MotorList,numMotors);
         //----------------------
 
-        qDebug("%d",ui->joyComboBox->currentIndex());
+        // update connect status
+        ui->connectStateText->setText(QString("Connected to driver"));
+        ui->connectIndi->setStyleSheet("background-color:blue;");
 
         // enable disconnect button and disable connect buttons
-        ui->disconnectPB->setVisible(true);
+        ui->disconnectDevicePB->setVisible(true);
         ui->connectDevicePB->setVisible(false);
-        ui->connectServerPB->setVisible(false);
     }
     //----------------------
+}
+
+void Dialog::on_disconnectDevicePB_clicked()
+{
+    // stop joystick thread
+    myJoyThread.stop();
+
+    // enable connect buttons
+    ui->connectDevicePB->setVisible(true);
+
+    // disable disconnect button
+    ui->disconnectDevicePB->setVisible(false);
+
+    // update connect status
+    ui->connectStateText->setText(QString("Disconnected from driver"));
+    ui->connectIndi->setStyleSheet("background-color:gray;");
+}
+
+void Dialog::on_disconnectServerPB_clicked()
+{
+    // stop joystick thread
+    myJoyThread.stop();
+
+    // enable connect buttons
+    ui->connectServerPB->setVisible(true);
+
+    // disable disconnect button
+    ui->disconnectServerPB->setVisible(false);
+
 }

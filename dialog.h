@@ -50,9 +50,10 @@ private slots:
     void on_motorChangePB_clicked();
     void on_motorResetPB_clicked();
 
-    void on_disconnectPB_clicked();
     void on_connectServerPB_clicked();
     void on_connectDevicePB_clicked();
+    void on_disconnectDevicePB_clicked();
+    void on_disconnectServerPB_clicked();
 
 private:
     Ui::Dialog *ui;
