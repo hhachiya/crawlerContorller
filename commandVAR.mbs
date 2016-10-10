@@ -1,0 +1,36 @@
+option explicit
+
+dim V1 as integer ' motor 1 command level
+dim V2 as integer ' motor 2 command level
+dim P1 as integer ' motor 1 power
+dim P2 as integer ' motor 2 power
+
+print("start control script...")
+
+top:
+
+' Receive commands with !VAR nn value via RS232 or USB from PC
+' V1 contains motion speed, +/-1000 range
+' V2 contains motion speed, +/-1000 range
+V1 = getvalue(_VAR, 1)
+V2 = getvalue(_VAR, 2)
+
+' Set motor command levels
+SetCommand(_GO, 1, V1)
+SetCommand(_GO, 2, V2)
+
+' Receive motor amps
+'Check http://www.robotshop.com/media/files/PDF/user-manual-sdc2150ns.pdf, TABLE16
+'_P: Read applied power level
+'_M: Read actual motor command
+'_A: Read motor amps
+P1=getvalue(_A, 1)
+P2=getvalue(_A, 2)
+
+' Set motor amps values to _VAR of +10 ID
+SetCommand(_VAR, 11, P1)
+SetCommand(_VAR, 12, P2)
+
+wait(10) ' Repeat loop every 10ms / 100Hz
+
+goto top
