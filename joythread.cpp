@@ -24,10 +24,19 @@ void JoyThread::startJoyThread(int joyId, QStringList leftMotorList, QStringList
     this->indiMotorList1 = indiMotorList1;
     this->indiMotorList2 = indiMotorList2;
 
-    // stop thread
+    // stop thread if thread is already running
     if(isRunning())
         stop();
 
+    // test if each motor is available
+    // individual motors group 1
+    QStringList pow;
+    for(int i=1;i++;i<=numMotors){
+        SetCommand("_VAR",i,100,connectMode);
+        pow.append(GetValue("_VAR",i+10,connectMode));
+
+        qDebug() << "motor check:" << i << ":" << pow[i-1];
+    }
 
     // start thread
     start();
@@ -65,8 +74,6 @@ void JoyThread::startDeviceJoyThread(int joyId, RoboteqDevice *myDevice, QString
 // method for getting joystick position and sending to UI
 void JoyThread::run()
 {
-    qDebug()<<"run: "<<currentThreadId() << " runflag=" << runFlag;
-
     while(runFlag) // loop if runFlag on
     {
         // get joystick position
@@ -159,6 +166,7 @@ void JoyThread::run()
     }
 
     //----------------------
+    // loops is over and then disconnect
     if(connectMode == SERVER_MODE){
         // close socket connection
         mySocket->write("_DIS ");

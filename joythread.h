@@ -26,7 +26,6 @@ class JoyThread : public QThread
 
 public:
     quint8 joyId;                       // joystick id
-    quint8 singleMotorId=1;             // single controlled motor id
     QString comPort;                    // COM port
     double joyMidValue = 32767;         // middle joystick value of each axis
     double motorMaxValue = 1000;        // maximum value of RoboteQ motor command
