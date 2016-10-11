@@ -78,7 +78,6 @@ Dialog::Dialog(QWidget *parent) :
     connect(&myJoyThread, &JoyThread::printPowerValue, this, &Dialog::printPowerValue);
     //----------------------
 
-
     //----------------------
     // roboteqDevice
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()){
@@ -93,12 +92,11 @@ Dialog::Dialog(QWidget *parent) :
     //----------------------
 
     //----------------------
-
     // disable disconnect button
     ui->disconnectDevicePB->setVisible(false);
     ui->disconnectServerPB->setVisible(false);
-
     ui->connectIndi->setStyleSheet("background-color:gray;");
+    //----------------------
 
 }
 
@@ -127,7 +125,8 @@ void Dialog::printPowerValue(const QStringList &pow)
     // widget color change
     int index=0;
     for(QString powVal: pow){
-        if(abs(powVal.toInt()) > 10)
+        qDebug() << "powVal=" << powVal;
+        if(abs(powVal.toInt()) > 0)
             activeMotorWidgets[index]->setStyleSheet("background-color:red;");
         else
             activeMotorWidgets[index]->setStyleSheet("background-color:light grey;");
@@ -377,8 +376,15 @@ void Dialog::on_connectServerPB_clicked()
     bool status=tcpSocket->waitForConnected();
     //----------------------
 
-    if(status){
+    if (!status){
+        qDebug("Error connecting to server: %d.\n",status);
+        ui->connectStateText->setText(QString("Error connecting to server:").append(QString::number(status)));
+    }else{
         tcpSocket->moveToThread(&myJoyThread); //tcpSocket in main thread is moved to JoyThread (could be accessed from run())
+
+        // update connect status
+        ui->connectStateText->setText(QString("Connected to server"));
+        ui->connectIndi->setStyleSheet("background-color:blue;");
 
         //----------------------
         // Thread
@@ -391,11 +397,11 @@ void Dialog::on_connectServerPB_clicked()
         //----------------------
 
         // enable disconnect button and disable connect buttons
-        ui->disconnectServerPB->setVisible(true);
         ui->connectServerPB->setVisible(false);
+        ui->disconnectServerPB->setVisible(true);
+        ui->connectDevicePB->setVisible(false);
+        ui->disconnectDevicePB->setVisible(false);
     }
-
-    qDebug("%d",ui->joyComboBox->currentIndex());
 }
 
 
@@ -425,8 +431,10 @@ void Dialog::on_connectDevicePB_clicked()
         ui->connectIndi->setStyleSheet("background-color:blue;");
 
         // enable disconnect button and disable connect buttons
-        ui->disconnectDevicePB->setVisible(true);
+        ui->connectServerPB->setVisible(false);
+        ui->disconnectServerPB->setVisible(false);
         ui->connectDevicePB->setVisible(false);
+        ui->disconnectDevicePB->setVisible(true);
     }
     //----------------------
 }
@@ -438,6 +446,7 @@ void Dialog::on_disconnectDevicePB_clicked()
 
     // enable connect buttons
     ui->connectDevicePB->setVisible(true);
+    ui->connectServerPB->setVisible(true);
 
     // disable disconnect button
     ui->disconnectDevicePB->setVisible(false);
@@ -453,9 +462,14 @@ void Dialog::on_disconnectServerPB_clicked()
     myJoyThread.stop();
 
     // enable connect buttons
+    ui->connectDevicePB->setVisible(true);
     ui->connectServerPB->setVisible(true);
 
     // disable disconnect button
     ui->disconnectServerPB->setVisible(false);
+
+    // update connect status
+    ui->connectStateText->setText(QString("Disconnected from server"));
+    ui->connectIndi->setStyleSheet("background-color:gray;");
 
 }
