@@ -75,6 +75,11 @@ private:
     QStringList rightMotorList;         // right motor ID string
     QStringList indi1MotorList;         // individual motor ID string, group 1
     QStringList indi2MotorList;         // individual motor ID string, group 2
+    QStringList leftMotorAliveList;     // left motor ID string
+    QStringList rightMotorAliveList;    // right motor ID string
+    QStringList indi1MotorAliveList;    // individual motor ID string, group 1
+    QStringList indi2MotorAliveList;    // individual motor ID string, group 2
+
     int numMotors;                      // number of motors
 
     // config

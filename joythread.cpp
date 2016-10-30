@@ -28,16 +28,6 @@ void JoyThread::startJoyThread(int joyId, QStringList leftMotorList, QStringList
     if(isRunning())
         stop();
 
-    // test if each motor is available
-    // individual motors group 1
-    QStringList pow;
-    for(int i=1;i++;i<=numMotors){
-        SetCommand("_VAR",i,100,connectMode);
-        pow.append(GetValue("_VAR",i+10,connectMode));
-
-        qDebug() << "motor check:" << i << ":" << pow[i-1];
-    }
-
     // start thread
     start();
     runFlag = true;
@@ -74,6 +64,26 @@ void JoyThread::startDeviceJoyThread(int joyId, RoboteqDevice *myDevice, QString
 // method for getting joystick position and sending to UI
 void JoyThread::run()
 {
+
+    //---------------------------
+    // test if each motor is available
+    for(int i=1;i<=numMotors;i++){
+        qDebug() << "motor id:" << i;
+        SetCommand("_VAR",i,500,connectMode);
+
+        QString retStr;
+        double sumAmp = 0;
+        for(int j=0;j<10;j++){
+            retStr = GetValue("_VAR",i+10,connectMode);
+            sumAmp = sumAmp + retStr.toDouble();
+            //qDebug() << "motor check:" << i << ":" << retStr;
+        }
+        SetCommand("_VAR",i,0,connectMode);
+        qDebug() << "average Amp=" << sumAmp/10;
+    }
+
+    //---------------------------
+
     while(runFlag) // loop if runFlag on
     {
         // get joystick position

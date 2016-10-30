@@ -148,13 +148,15 @@ void Dialog::on_motorChangePB_clicked()
     //-------------------
     // left motor ids
     leftMotorList.clear();
-    QList<QWidget *> leftMotorWidgets = ui->leftMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    //QList<QWidget *> leftMotorWidgets = ui->leftMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
     QList<QCheckBox *> leftMotorCBs = ui->leftMotorGB->findChildren<QCheckBox *>();
     QString leftMotorIDs = "";
 
+    /*
     // widget reset
     for(int i=0;i<leftMotorWidgets.size();i++)
         leftMotorWidgets[i]->setStyleSheet("background-color:light gray;");
+    */
 
     // set list, check box, widget
     for(int i=0;i<leftMotorCBs.size();i++){
@@ -170,8 +172,10 @@ void Dialog::on_motorChangePB_clicked()
             else
                 leftMotorIDs = leftMotorIDs + "," + motorID;
 
+            /*
             // widget
             leftMotorWidgets[i]->setStyleSheet("background-color:blue;");
+            */
         }
     }
 
@@ -180,13 +184,15 @@ void Dialog::on_motorChangePB_clicked()
     //-------------------
     // right motor ids
     rightMotorList.clear();
-    QList<QWidget *> rightMotorWidgets = ui->rightMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    //QList<QWidget *> rightMotorWidgets = ui->rightMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
     QList<QCheckBox *> rightMotorCBs = ui->rightMotorGB->findChildren<QCheckBox *>();
     QString rightMotorIDs = "";
 
+    /*
     // widget reset
     for(int i=0;i<rightMotorWidgets.size();i++)
         rightMotorWidgets[i]->setStyleSheet("background-color:light gray;");
+    */
 
     // set list, check box, widget
     for(int i=0;i<rightMotorCBs.size();i++){
@@ -203,8 +209,10 @@ void Dialog::on_motorChangePB_clicked()
             else
                 rightMotorIDs = rightMotorIDs + "," + motorID;
 
+            /*
             // widget
             rightMotorWidgets[i]->setStyleSheet("background-color:blue;");
+            */
         }
     }
     //-------------------
@@ -212,13 +220,15 @@ void Dialog::on_motorChangePB_clicked()
     //-------------------
     // individual motor ids, group1
     indi1MotorList.clear();
-    QList<QWidget *> indi1MotorWidgets = ui->indi1MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    //QList<QWidget *> indi1MotorWidgets = ui->indi1MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
     QList<QCheckBox *> indi1MotorCBs = ui->indi1MotorGB->findChildren<QCheckBox *>();
     QString indi1MotorIDs;
 
+    /*
     // widget reset
     for(int i=0;i<indi1MotorWidgets.size();i++)
         indi1MotorWidgets[i]->setStyleSheet("background-color:light gray;");
+    */
 
     // set list, check box, widget
     for(int i=0;i<indi1MotorCBs.size();i++){
@@ -234,8 +244,10 @@ void Dialog::on_motorChangePB_clicked()
             else
                 indi1MotorIDs = indi1MotorIDs + "," + motorID;
 
+            /*
             // widget
             indi1MotorWidgets[i]->setStyleSheet("background-color:blue;");
+            */
         }
     }
     //-------------------
@@ -243,13 +255,15 @@ void Dialog::on_motorChangePB_clicked()
     //-------------------
     // individual motor ids, group2
     indi2MotorList.clear();
-    QList<QWidget *> indi2MotorWidgets = ui->indi2MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    //QList<QWidget *> indi2MotorWidgets = ui->indi2MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
     QList<QCheckBox *> indi2MotorCBs = ui->indi2MotorGB->findChildren<QCheckBox *>();
     QString indi2MotorIDs;
 
+    /*
     // widget reset
     for(int i=0;i<indi2MotorWidgets.size();i++)
         indi2MotorWidgets[i]->setStyleSheet("background-color:light gray;");
+    */
 
     // set list, check box, widget
     for(int i=0;i<indi2MotorCBs.size();i++){
@@ -264,9 +278,10 @@ void Dialog::on_motorChangePB_clicked()
                 indi2MotorIDs = motorID;
             else
                 indi2MotorIDs = indi2MotorIDs + "," + motorID;
-
+            /*
             // widget
             indi2MotorWidgets[i]->setStyleSheet("background-color:blue;");
+            */
         }
     }
     //-------------------
