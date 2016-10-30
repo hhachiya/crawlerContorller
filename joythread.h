@@ -39,7 +39,7 @@ public:
     void startJoyThread(int JoyId, QStringList leftMotors, QStringList rightMotors, QStringList indiMotors1, QStringList indiMotors2, int numMotors);
     void startServerJoyThread(int JoyId, QTcpSocket* mySocket, QStringList leftMotors, QStringList rightMotors, QStringList indiMotors1, QStringList indiMotors2, int numMotors);
     void startDeviceJoyThread(int JoyId, RoboteqDevice* myDevice, QStringList leftMotors, QStringList rightMotors, QStringList indiMotors1, QStringList indiMotors2, int numMotors);
-    void changeMotorIDs(QStringList leftMotorList, QStringList rightMotorList, QStringList indiMotorList1, QStringList indiMotorList2);
+    void changeMotorIDs(QStringList leftMotorList, QStringList rightMotorList, QStringList indi1MotorList, QStringList indi2MotorList);
 
     int connectMode;                // switch connection server or driver
 
@@ -52,18 +52,23 @@ signals:
 
     // signal for sending motor power value
     void printPowerValue(const QStringList pow);
+
+    // signal for sending motor alive motor list
+    void setAliveMotors(const QStringList aliveMotorList);
+
 protected:
     void run(); // running process
 
 private:
-    volatile bool runFlag;          // flag for thread running (volatile: surpress optimization of compile)
-    JOYINFOEX joyInfo;              // joystick interface
-    QTcpSocket* mySocket;          // TCP socket
-    RoboteqDevice* myDevice;   // RoboteQ device
-    QStringList leftMotorList;      // left motor ids
-    QStringList rightMotorList;     // right motor ids
-    QStringList indiMotorList1;     // individual motor ids, group 1
-    QStringList indiMotorList2;     // individual motor ids, group 2
+    volatile bool runFlag;              // flag for thread running (volatile: surpress optimization of compile)
+    JOYINFOEX joyInfo;                  // joystick interface
+    QTcpSocket* mySocket;               // TCP socket
+    RoboteqDevice* myDevice;            // RoboteQ device
+    QStringList leftMotorList;          // left motor ids
+    QStringList rightMotorList;         // right motor ids
+    QStringList indi1MotorList;         // individual motor ids, group 1
+    QStringList indi2MotorList;         // individual motor ids, group 2
+    QStringList aliveMotorList;         // alive motor ID string
 
     // limit value in then range between min and max
     double JoyThread::limitValue(double value,double min,double max);

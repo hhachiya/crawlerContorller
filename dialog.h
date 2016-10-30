@@ -46,6 +46,9 @@ private slots:
     // slots for printing motor power values
     void printPowerValue(const QStringList &pow);
 
+    // slots for sending motor alive motor list
+    void setAliveMotors(const QStringList &aliveMotorList);
+
     // slots for changing and reseting motor ids
     void on_motorChangePB_clicked();
     void on_motorResetPB_clicked();
@@ -75,10 +78,7 @@ private:
     QStringList rightMotorList;         // right motor ID string
     QStringList indi1MotorList;         // individual motor ID string, group 1
     QStringList indi2MotorList;         // individual motor ID string, group 2
-    QStringList leftMotorAliveList;     // left motor ID string
-    QStringList rightMotorAliveList;    // right motor ID string
-    QStringList indi1MotorAliveList;    // individual motor ID string, group 1
-    QStringList indi2MotorAliveList;    // individual motor ID string, group 2
+    QStringList aliveMotorList;         // alive motor ID string
 
     int numMotors;                      // number of motors
 

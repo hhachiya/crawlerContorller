@@ -40,6 +40,9 @@ Dialog::Dialog(QWidget *parent) :
     settings.endGroup();
     //----------------------
 
+    // reset alive motor list
+    aliveMotorList.clear();
+
     //======================
     // display at GUI
 
@@ -52,6 +55,7 @@ Dialog::Dialog(QWidget *parent) :
     ui->controlPortText->setText(QString::number(controlPort)); // control port number
     ui->videoPortText->setText(QString::number(videoPort)); // video port number
     ui->webView->load(QUrl("http://"+ipAddress+":"+QString::number(videoPort)));    // set web browser
+    ui->webView->setVisible(false);
     //----------------------
     //======================
 
@@ -76,6 +80,9 @@ Dialog::Dialog(QWidget *parent) :
 
     // connect JoyThread::printPowerValue to Dialog::printPowerValue
     connect(&myJoyThread, &JoyThread::printPowerValue, this, &Dialog::printPowerValue);
+
+    // connect JoyThread::aliveMotorList to Dialog::aliveMotorList
+    connect(&myJoyThread, &JoyThread::setAliveMotors, this, &Dialog::setAliveMotors);
     //----------------------
 
     //----------------------
@@ -309,6 +316,17 @@ void Dialog::on_motorResetPB_clicked()
     displayMotorIDs();
 }
 
+// slots for sending motor alive motor list
+void Dialog::setAliveMotors(const QStringList &aliveMotorList)
+{
+    this->aliveMotorList = aliveMotorList;
+
+    qDebug() << "aliveMotorList:" << aliveMotorList.size();
+
+    // displaying motor ids
+    displayMotorIDs();
+}
+
 void Dialog::displayMotorIDs()
 {
     //----------------------
@@ -321,9 +339,14 @@ void Dialog::displayMotorIDs()
         leftMotorCBs[i]->setChecked(false);
 
     // set checkbox and widget
+    if(aliveMotorList.size())
+       for(QString id: aliveMotorList){
+            leftMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+       }
+
     if(leftMotorList.size())
        for(QString id: leftMotorList){
-            leftMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+           qDebug() << "leftMotor:" << id.toInt()-1;
             leftMotorCBs[id.toInt()-1]->setChecked(true);
        }
     //----------------------
@@ -338,9 +361,13 @@ void Dialog::displayMotorIDs()
         rightMotorCBs[i]->setChecked(false);
 
     // set checkbox and widget
+    if(aliveMotorList.size())
+        for(QString id: aliveMotorList){
+            rightMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+        }
+
     if(rightMotorList.size())
         for(QString id: rightMotorList){
-            rightMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
             rightMotorCBs[id.toInt()-1]->setChecked(true);
         }
     //----------------------
@@ -355,9 +382,13 @@ void Dialog::displayMotorIDs()
         indi1MotorCBs[i]->setChecked(false);
 
     // set checkbox and widget
+    if(aliveMotorList.size())
+        for(QString id: aliveMotorList){
+            indi1MotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+        }
+
     if(indi1MotorList.size())
         for(QString id: indi1MotorList){
-            indi1MotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
             indi1MotorCBs[id.toInt()-1]->setChecked(true);
         }
     //----------------------
@@ -372,15 +403,17 @@ void Dialog::displayMotorIDs()
         indi2MotorCBs[i]->setChecked(false);
 
     // set checkbox and widget
+    if(aliveMotorList.size())
+        for(QString id: aliveMotorList){
+            indi2MotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+        }
+
     if(indi2MotorList.size())
         for(QString id: indi2MotorList){
-            indi2MotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
             indi2MotorCBs[id.toInt()-1]->setChecked(true);
         }
     //----------------------
 }
-
-
 
 void Dialog::on_connectServerPB_clicked()
 {

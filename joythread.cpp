@@ -10,7 +10,7 @@ JoyThread::JoyThread()
     joyInfo.dwFlags = JOY_RETURNALL;
 }
 
-void JoyThread::startJoyThread(int joyId, QStringList leftMotorList, QStringList rightMotorList, QStringList indiMotorList1, QStringList indiMotorList2, int numMotors)
+void JoyThread::startJoyThread(int joyId, QStringList leftMotorList, QStringList rightMotorList, QStringList indi1MotorList, QStringList indi2MotorList, int numMotors)
 {
     qDebug()<<"startJoyThread: "<<currentThreadId();
 
@@ -21,8 +21,8 @@ void JoyThread::startJoyThread(int joyId, QStringList leftMotorList, QStringList
     this->numMotors = numMotors;
     this->leftMotorList = leftMotorList;
     this->rightMotorList = rightMotorList;
-    this->indiMotorList1 = indiMotorList1;
-    this->indiMotorList2 = indiMotorList2;
+    this->indi1MotorList = indi1MotorList;
+    this->indi2MotorList = indi2MotorList;
 
     // stop thread if thread is already running
     if(isRunning())
@@ -33,7 +33,7 @@ void JoyThread::startJoyThread(int joyId, QStringList leftMotorList, QStringList
     runFlag = true;
 }
 
-void JoyThread::startServerJoyThread(int joyId, QTcpSocket *mySocket, QStringList leftMotorList, QStringList rightMotorList, QStringList indiMotorList1, QStringList indiMotorList2, int numMotors)
+void JoyThread::startServerJoyThread(int joyId, QTcpSocket *mySocket, QStringList leftMotorList, QStringList rightMotorList, QStringList indi1MotorList, QStringList indi2MotorList, int numMotors)
 {
     qDebug()<<"startSocketJoyThread: "<<currentThreadId();
 
@@ -44,10 +44,10 @@ void JoyThread::startServerJoyThread(int joyId, QTcpSocket *mySocket, QStringLis
     connectMode = SERVER_MODE;
 
     // start thread
-    startJoyThread(joyId, leftMotorList, rightMotorList, indiMotorList1, indiMotorList2, numMotors);
+    startJoyThread(joyId, leftMotorList, rightMotorList, indi1MotorList, indi2MotorList, numMotors);
 }
 
-void JoyThread::startDeviceJoyThread(int joyId, RoboteqDevice *myDevice, QStringList leftMotorList, QStringList rightMotorList, QStringList indiMotorList1, QStringList indiMotorList2, int numMotors)
+void JoyThread::startDeviceJoyThread(int joyId, RoboteqDevice *myDevice, QStringList leftMotorList, QStringList rightMotorList, QStringList indi1MotorList, QStringList indi2MotorList, int numMotors)
 {
     qDebug()<<"startDeviceJoyThread: "<<currentThreadId();
 
@@ -58,7 +58,7 @@ void JoyThread::startDeviceJoyThread(int joyId, RoboteqDevice *myDevice, QString
     connectMode = DEVICE_MODE;
 
     // start thread
-    startJoyThread(joyId, leftMotorList, rightMotorList, indiMotorList1, indiMotorList2, numMotors);
+    startJoyThread(joyId, leftMotorList, rightMotorList, indi1MotorList, indi2MotorList, numMotors);
 }
 
 // method for getting joystick position and sending to UI
@@ -66,22 +66,29 @@ void JoyThread::run()
 {
 
     //---------------------------
-    // test if each motor is available
-    for(int i=1;i<=numMotors;i++){
-        qDebug() << "motor id:" << i;
-        SetCommand("_VAR",i,500,connectMode);
+    // test if each motor is available (alive)
+    aliveMotorList.clear();
+    for(int motorID=1;motorID<=numMotors;motorID++){
 
-        QString retStr;
+        // move motor
+        SetCommand("_VAR",motorID,500,connectMode);
+
+        // mesure amp value
         double sumAmp = 0;
-        for(int j=0;j<10;j++){
-            retStr = GetValue("_VAR",i+10,connectMode);
-            sumAmp = sumAmp + retStr.toDouble();
-            //qDebug() << "motor check:" << i << ":" << retStr;
-        }
-        SetCommand("_VAR",i,0,connectMode);
+        for(int ampTrial=0;ampTrial<10;ampTrial++)
+            sumAmp = sumAmp + GetValue("_VAR",motorID+10,connectMode).toDouble();
+
+        // stop motor
+        SetCommand("_VAR",motorID,0,connectMode);
+
+        // add motor id if average amp is higher than threshold
+        if(sumAmp/10 > 1)
+            aliveMotorList.append(QString::number(motorID));
+
         qDebug() << "average Amp=" << sumAmp/10;
     }
 
+    setAliveMotors(aliveMotorList);
     //---------------------------
 
     while(runFlag) // loop if runFlag on
@@ -128,11 +135,11 @@ void JoyThread::run()
             // set velocity value
             if(abs(indiThrottleValue1) > throttleMaxRotValue || abs(indiThrottleValue2) > throttleMaxRotValue){
                 // individual motors group 1
-                for(QString id: indiMotorList1)
+                for(QString id: indi1MotorList)
                     SetCommand("_VAR",id.toInt(),(int)indiThrottleValue1,connectMode);
 
                 // individual motors group 2
-                for(QString id: indiMotorList2)
+                for(QString id: indi2MotorList)
                     SetCommand("_VAR",id.toInt(),(int)indiThrottleValue2,connectMode);
 
             }else{
@@ -323,12 +330,12 @@ void JoyThread::stop()
 }
 
 // method for changing invidual controlled motor id
-void JoyThread::changeMotorIDs(QStringList leftMotorList, QStringList rightMotorList, QStringList indiMotorList1, QStringList indiMotorList2)
+void JoyThread::changeMotorIDs(QStringList leftMotorList, QStringList rightMotorList, QStringList indi1MotorList, QStringList indi2MotorList)
 {
     this->leftMotorList = leftMotorList;
     this->rightMotorList = rightMotorList;
-    this->indiMotorList1 = indiMotorList1;
-    this->indiMotorList2 = indiMotorList2;
+    this->indi1MotorList = indi1MotorList;
+    this->indi2MotorList = indi2MotorList;
 }
 
 // destructor
