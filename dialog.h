@@ -18,8 +18,9 @@
 
 // headers for capturing camera image
 #include <QCamera>
+#include <QCameraInfo>
 
-
+Q_DECLARE_METATYPE(QCameraInfo)
 
 namespace Ui {
 class Dialog;
@@ -53,10 +54,14 @@ private slots:
     void on_motorChangePB_clicked();
     void on_motorResetPB_clicked();
 
+    // slots for connecting/disconnecting to/from server and device
     void on_connectServerPB_clicked();
     void on_connectDevicePB_clicked();
     void on_disconnectDevicePB_clicked();
     void on_disconnectServerPB_clicked();
+
+    // slot for camera  
+    void on_connectCameraPB_clicked();
 
 private:
     Ui::Dialog *ui;

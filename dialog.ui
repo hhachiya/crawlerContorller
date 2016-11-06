@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1040</width>
-    <height>597</height>
+    <height>561</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>10</x>
      <y>180</y>
      <width>371</width>
-     <height>391</height>
+     <height>371</height>
     </rect>
    </property>
    <property name="font">
@@ -34,7 +34,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>90</y>
+      <y>40</y>
       <width>101</width>
       <height>141</height>
      </rect>
@@ -190,7 +190,7 @@
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>90</y>
+      <y>40</y>
       <width>101</width>
       <height>141</height>
      </rect>
@@ -346,7 +346,7 @@
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>240</y>
+      <y>220</y>
       <width>101</width>
       <height>141</height>
      </rect>
@@ -502,7 +502,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>240</y>
+      <y>220</y>
       <width>101</width>
       <height>141</height>
      </rect>
@@ -658,7 +658,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>240</y>
+      <y>220</y>
       <width>91</width>
       <height>141</height>
      </rect>
@@ -828,54 +828,11 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="connectState">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>291</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="title">
-     <string>接続状態</string>
-    </property>
-    <widget class="QTextBrowser" name="connectStateText">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>25</y>
-       <width>221</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-      </font>
-     </property>
-    </widget>
-    <widget class="QWidget" name="connectIndi" native="true">
-     <property name="geometry">
-      <rect>
-       <x>22</x>
-       <y>27</y>
-       <width>21</width>
-       <height>21</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
    <widget class="QGroupBox" name="activeMotorGB_2">
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>90</y>
+      <y>40</y>
       <width>91</width>
       <height>141</height>
      </rect>
@@ -1058,12 +1015,25 @@
      <string>リセット</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="motorChangePB">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>160</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>変更</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QWebEngineView" name="webView" native="true">
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>50</y>
+     <y>70</y>
      <width>640</width>
      <height>480</height>
     </rect>
@@ -1074,7 +1044,7 @@
     <rect>
      <x>10</x>
      <y>20</y>
-     <width>351</width>
+     <width>371</width>
      <height>151</height>
     </rect>
    </property>
@@ -1084,7 +1054,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="driverConnectTab">
     <attribute name="title">
@@ -1093,9 +1063,9 @@
     <widget class="QComboBox" name="serialComboBox">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>50</y>
-       <width>81</width>
+       <x>110</x>
+       <y>30</y>
+       <width>131</width>
        <height>22</height>
       </rect>
      </property>
@@ -1105,18 +1075,18 @@
       </font>
      </property>
     </widget>
-    <widget class="QLabel" name="controlDriverPortLabel">
+    <widget class="QLabel" name="controlDevicePortLabel">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>50</y>
+       <x>10</x>
+       <y>30</y>
        <width>101</width>
        <height>24</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="text">
@@ -1129,8 +1099,8 @@
     <widget class="QPushButton" name="connectDevicePB">
      <property name="geometry">
       <rect>
-       <x>210</x>
-       <y>50</y>
+       <x>260</x>
+       <y>30</y>
        <width>51</width>
        <height>23</height>
       </rect>
@@ -1147,8 +1117,8 @@
     <widget class="QPushButton" name="disconnectDevicePB">
      <property name="geometry">
       <rect>
-       <x>210</x>
-       <y>50</y>
+       <x>260</x>
+       <y>30</y>
        <width>51</width>
        <height>23</height>
       </rect>
@@ -1162,6 +1132,45 @@
       <string>停止</string>
      </property>
     </widget>
+    <widget class="QLabel" name="connectDeviceStateTextLabel">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>70</y>
+       <width>261</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="connectDeviceStateLabel">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>74</y>
+       <width>71</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;メッセージ：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="serverConnectTab">
     <attribute name="title">
@@ -1170,8 +1179,8 @@
     <widget class="QLabel" name="ipAddrLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>10</y>
+       <x>59</x>
+       <y>2</y>
        <width>71</width>
        <height>24</height>
       </rect>
@@ -1182,7 +1191,7 @@
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;IPアドレス：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IPアドレス：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1191,8 +1200,8 @@
     <widget class="QTextBrowser" name="ipAddrText">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>10</y>
+       <x>139</x>
+       <y>2</y>
        <width>101</width>
        <height>25</height>
       </rect>
@@ -1206,8 +1215,8 @@
     <widget class="QLabel" name="controlPortLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>51</y>
+       <x>37</x>
+       <y>33</y>
        <width>101</width>
        <height>24</height>
       </rect>
@@ -1218,7 +1227,7 @@
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;制御用ポート：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;制御用ポート：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1227,8 +1236,8 @@
     <widget class="QTextBrowser" name="controlPortText">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>50</y>
+       <x>140</x>
+       <y>31</y>
        <width>51</width>
        <height>25</height>
       </rect>
@@ -1242,19 +1251,19 @@
     <widget class="QLabel" name="videoPortLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>90</y>
+       <x>34</x>
+       <y>62</y>
        <width>101</width>
        <height>24</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ビデオ用ポート：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ビデオ用ポート：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
@@ -1263,8 +1272,8 @@
     <widget class="QTextBrowser" name="videoPortText">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>90</y>
+       <x>140</x>
+       <y>60</y>
        <width>51</width>
        <height>25</height>
       </rect>
@@ -1309,6 +1318,45 @@
      </property>
      <property name="text">
       <string>停止</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="controlServerMsgLabel">
+     <property name="geometry">
+      <rect>
+       <x>3</x>
+       <y>94</y>
+       <width>71</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;メッセージ：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="connectServerStateLabel">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>90</y>
+       <width>261</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
@@ -1470,7 +1518,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="joyXLabel_2">
+    <widget class="QLabel" name="joyLabel">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -1492,74 +1540,240 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab">
+   <widget class="QWidget" name="cameraTab">
     <attribute name="title">
      <string>カメラ設定</string>
     </attribute>
-    <widget class="QComboBox" name="joyComboBox_2">
+    <widget class="QComboBox" name="cameraComboBox">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>50</y>
-       <width>91</width>
+       <x>100</x>
+       <y>10</y>
+       <width>161</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="joyXLabel_3">
+    <widget class="QLabel" name="cameraLabel">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>50</y>
-       <width>101</width>
+       <x>10</x>
+       <y>10</y>
+       <width>81</width>
        <height>24</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;カメラポート：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;カメラポート：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
      </property>
     </widget>
+    <widget class="QPushButton" name="connectCameraPB">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>40</y>
+       <width>51</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>接続</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="connectCameraStateLabel">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>74</y>
+       <width>71</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;メッセージ：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="connectCameraStateTextLabel">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>70</y>
+       <width>261</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="disconnectCameraPB">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>40</y>
+       <width>51</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>停止</string>
+     </property>
+    </widget>
+    <zorder>cameraComboBox</zorder>
+    <zorder>cameraLabel</zorder>
+    <zorder>connectCameraStateLabel</zorder>
+    <zorder>connectCameraStateTextLabel</zorder>
+    <zorder>disconnectCameraPB</zorder>
+    <zorder>connectCameraPB</zorder>
    </widget>
-  </widget>
-  <widget class="QPushButton" name="motorChangePB">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>340</y>
-     <width>51</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>変更</string>
-   </property>
   </widget>
   <widget class="QCameraViewfinder" name="viewfinder" native="true">
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>50</y>
+     <y>70</y>
      <width>640</width>
      <height>480</height>
     </rect>
    </property>
   </widget>
+  <widget class="QFrame" name="stateIndicatorFrame">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>20</y>
+     <width>621</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QWidget" name="robotStateIndicator" native="true">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>6</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="robotStateLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>9</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>ロボット：</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cameraStateLabel">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>10</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>カメラ：</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cameraStateTextLabel">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>8</y>
+      <width>191</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cameraStateTextLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>8</y>
+      <width>191</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>QWebEngineView</class>
-   <extends>QWidget</extends>
-   <header>qwebengineview.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>QCameraViewfinder</class>
    <extends>QWidget</extends>
    <header>qcameraviewfinder.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header>qwebengineview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

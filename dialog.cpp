@@ -59,7 +59,7 @@ Dialog::Dialog(QWidget *parent) :
     //----------------------
     //======================
 
-    //----------------------
+    //======================
     // JOYSTICK
     // check joystick availability and add corresponding item to joyComboBox
     JOYCAPS joyCaps;
@@ -83,28 +83,70 @@ Dialog::Dialog(QWidget *parent) :
 
     // connect JoyThread::aliveMotorList to Dialog::aliveMotorList
     connect(&myJoyThread, &JoyThread::setAliveMotors, this, &Dialog::setAliveMotors);
-    //----------------------
+    //======================
 
-    //----------------------
-    // roboteqDevice
-    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()){
-        ui->serialComboBox->addItem(info.portName());
+
+    //======================
+    // ROBOT DEVICE
+
+    // list serial device
+    foreach (const QSerialPortInfo &serialInfo, QSerialPortInfo::availablePorts()){
+
+        ui->serialComboBox->addItem(serialInfo.portName());
+        /*
+        QAction *serialDeviceAction = new QAction(serialInfo.description(), serialDevicesGroup);
+        serialDeviceAction->setCheckable(true);
+        serialDeviceAction->setData(QVariant::fromValue(serialInfo));
+
+        ui->serialComboBox->addItem(serialInfo.portName(), serialDeviceAction);
+        */
     }
+    //======================
 
-    //----------------------
-    // set the viewfinder of camera and start to display image
-    camera = new QCamera;
-    camera->setViewfinder(ui->viewfinder);
-    camera->start();
-    //----------------------
+    //======================
+    // CAMERA
+    // list camera device and cameraInfo to Qaction data
+    foreach (const QCameraInfo &cameraInfo, QCameraInfo::availableCameras()) {
 
-    //----------------------
+        // set cameraInfo to Qaction data
+        QAction *videoDeviceAction = new QAction(cameraInfo.description(), this);
+        videoDeviceAction->setCheckable(true);
+        videoDeviceAction->setData(QVariant::fromValue(cameraInfo));
+
+        // add item to cameraComboBox
+        ui->cameraComboBox->addItem(cameraInfo.description(),QVariant::fromValue(videoDeviceAction));
+    }
+    //======================
+
+    //======================
     // disable disconnect button
     ui->disconnectDevicePB->setVisible(false);
     ui->disconnectServerPB->setVisible(false);
-    ui->connectIndi->setStyleSheet("background-color:gray;");
-    //----------------------
+    ui->robotStateIndicator->setStyleSheet("background-color:gray;");
+    //======================
 
+}
+
+void Dialog::on_connectCameraPB_clicked()
+{
+    // set the viewfinder of camera and start to display image
+    QAction *videoDeviceAction = ui->cameraComboBox->itemData(ui->cameraComboBox->currentIndex(), Qt::UserRole).value<QAction *>();
+    QCameraInfo cameraInfo = qvariant_cast<QCameraInfo>(videoDeviceAction->data());
+    camera = new QCamera(cameraInfo);
+    camera->setViewfinder(ui->viewfinder);
+    camera->start();
+
+    // connected
+    if(camera->state() == QCamera::ActiveState){
+        //ui->connectCameraPB->setVisible(false);
+        //ui->disconnectCameraPB->setVisible(true);
+        ui->cameraStateTextLabel->setText(cameraInfo.description());
+        ui->connectCameraStateTextLabel->setText(QString("Connected to camera"));
+    }else{
+        ui->cameraStateTextLabel->setText(QString(""));
+        qDebug() << camera->errorString() << " " << camera->error();
+        ui->connectCameraStateTextLabel->setText(QString("Error connecting to camera:").append(camera->errorString()));
+    }
 }
 
 void Dialog::printJoyValue(const QString &x, const QString &y, const QString &z, const QString &r)
@@ -125,7 +167,7 @@ void Dialog::printEncoderValue(const QStringList enc)
 
 void Dialog::printPowerValue(const QStringList &pow)
 {
-    //-------------------
+
     // active motor ids
     QList<QWidget *> activeMotorWidgets = ui->activeMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
 
@@ -146,24 +188,16 @@ Dialog::~Dialog()
     delete ui;
 }
 
-
-
 void Dialog::on_motorChangePB_clicked()
 {
     QString motorID;
 
-    //-------------------
+    //======================
     // left motor ids
     leftMotorList.clear();
-    //QList<QWidget *> leftMotorWidgets = ui->leftMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
     QList<QCheckBox *> leftMotorCBs = ui->leftMotorGB->findChildren<QCheckBox *>();
     QString leftMotorIDs = "";
 
-    /*
-    // widget reset
-    for(int i=0;i<leftMotorWidgets.size();i++)
-        leftMotorWidgets[i]->setStyleSheet("background-color:light gray;");
-    */
 
     // set list, check box, widget
     for(int i=0;i<leftMotorCBs.size();i++){
@@ -178,28 +212,15 @@ void Dialog::on_motorChangePB_clicked()
                 leftMotorIDs = motorID;
             else
                 leftMotorIDs = leftMotorIDs + "," + motorID;
-
-            /*
-            // widget
-            leftMotorWidgets[i]->setStyleSheet("background-color:blue;");
-            */
         }
     }
+    //======================
 
-    //-------------------
-
-    //-------------------
+    //======================
     // right motor ids
     rightMotorList.clear();
-    //QList<QWidget *> rightMotorWidgets = ui->rightMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
     QList<QCheckBox *> rightMotorCBs = ui->rightMotorGB->findChildren<QCheckBox *>();
     QString rightMotorIDs = "";
-
-    /*
-    // widget reset
-    for(int i=0;i<rightMotorWidgets.size();i++)
-        rightMotorWidgets[i]->setStyleSheet("background-color:light gray;");
-    */
 
     // set list, check box, widget
     for(int i=0;i<rightMotorCBs.size();i++){
@@ -215,27 +236,15 @@ void Dialog::on_motorChangePB_clicked()
                 rightMotorIDs = motorID;
             else
                 rightMotorIDs = rightMotorIDs + "," + motorID;
-
-            /*
-            // widget
-            rightMotorWidgets[i]->setStyleSheet("background-color:blue;");
-            */
         }
     }
-    //-------------------
+    //======================
 
-    //-------------------
+    //======================
     // individual motor ids, group1
     indi1MotorList.clear();
-    //QList<QWidget *> indi1MotorWidgets = ui->indi1MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
     QList<QCheckBox *> indi1MotorCBs = ui->indi1MotorGB->findChildren<QCheckBox *>();
     QString indi1MotorIDs;
-
-    /*
-    // widget reset
-    for(int i=0;i<indi1MotorWidgets.size();i++)
-        indi1MotorWidgets[i]->setStyleSheet("background-color:light gray;");
-    */
 
     // set list, check box, widget
     for(int i=0;i<indi1MotorCBs.size();i++){
@@ -250,27 +259,15 @@ void Dialog::on_motorChangePB_clicked()
                 indi1MotorIDs = motorID;
             else
                 indi1MotorIDs = indi1MotorIDs + "," + motorID;
-
-            /*
-            // widget
-            indi1MotorWidgets[i]->setStyleSheet("background-color:blue;");
-            */
         }
     }
-    //-------------------
+    //======================
 
-    //-------------------
+    //======================
     // individual motor ids, group2
     indi2MotorList.clear();
-    //QList<QWidget *> indi2MotorWidgets = ui->indi2MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
     QList<QCheckBox *> indi2MotorCBs = ui->indi2MotorGB->findChildren<QCheckBox *>();
     QString indi2MotorIDs;
-
-    /*
-    // widget reset
-    for(int i=0;i<indi2MotorWidgets.size();i++)
-        indi2MotorWidgets[i]->setStyleSheet("background-color:light gray;");
-    */
 
     // set list, check box, widget
     for(int i=0;i<indi2MotorCBs.size();i++){
@@ -285,13 +282,9 @@ void Dialog::on_motorChangePB_clicked()
                 indi2MotorIDs = motorID;
             else
                 indi2MotorIDs = indi2MotorIDs + "," + motorID;
-            /*
-            // widget
-            indi2MotorWidgets[i]->setStyleSheet("background-color:blue;");
-            */
         }
     }
-    //-------------------
+    //======================
 
     // change motor ids
     myJoyThread.changeMotorIDs(leftMotorList,rightMotorList,indi1MotorList, indi2MotorList);
@@ -426,13 +419,13 @@ void Dialog::on_connectServerPB_clicked()
 
     if (!status){
         qDebug("Error connecting to server: %d.\n",status);
-        ui->connectStateText->setText(QString("Error connecting to server:").append(QString::number(status)));
+        ui->connectServerStateLabel->setText(QString("Error connecting to server:").append(QString::number(status)));
     }else{
         tcpSocket->moveToThread(&myJoyThread); //tcpSocket in main thread is moved to JoyThread (could be accessed from run())
 
         // update connect status
-        ui->connectStateText->setText(QString("Connected to server"));
-        ui->connectIndi->setStyleSheet("background-color:blue;");
+        ui->connectServerStateLabel->setText(QString("Connected to server"));
+        ui->robotStateIndicator->setStyleSheet("background-color:blue;");
 
         //----------------------
         // Thread
@@ -464,7 +457,7 @@ void Dialog::on_connectDevicePB_clicked()
     if (status != RQ_SUCCESS)
     {
         qDebug("Error connecting to device: %d.\n",status);
-        ui->connectStateText->setText(QString("Error connecting to driver:").append(QString::number(status)));
+        ui->connectDeviceStateTextLabel->setText(QString("Error connecting to device:").append(QString::number(status)));
     }else{
         // stop joystick thread
         if(myJoyThread.isRunning())
@@ -475,8 +468,8 @@ void Dialog::on_connectDevicePB_clicked()
         //----------------------
 
         // update connect status
-        ui->connectStateText->setText(QString("Connected to driver"));
-        ui->connectIndi->setStyleSheet("background-color:blue;");
+        ui->connectDeviceStateTextLabel->setText(QString("Connected to driver"));
+        ui->robotStateIndicator->setStyleSheet("background-color:blue;");
 
         // enable disconnect button and disable connect buttons
         ui->connectServerPB->setVisible(false);
@@ -500,8 +493,8 @@ void Dialog::on_disconnectDevicePB_clicked()
     ui->disconnectDevicePB->setVisible(false);
 
     // update connect status
-    ui->connectStateText->setText(QString("Disconnected from driver"));
-    ui->connectIndi->setStyleSheet("background-color:gray;");
+    ui->connectDeviceStateTextLabel->setText(QString("Disconnected from driver"));
+    ui->robotStateIndicator->setStyleSheet("background-color:gray;");
 }
 
 void Dialog::on_disconnectServerPB_clicked()
@@ -517,7 +510,9 @@ void Dialog::on_disconnectServerPB_clicked()
     ui->disconnectServerPB->setVisible(false);
 
     // update connect status
-    ui->connectStateText->setText(QString("Disconnected from server"));
-    ui->connectIndi->setStyleSheet("background-color:gray;");
+    ui->connectServerStateLabel->setText(QString("Disconnected from server"));
+    ui->robotStateIndicator->setStyleSheet("background-color:gray;");
 
 }
+
+
