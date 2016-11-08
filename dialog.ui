@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1040</width>
-    <height>561</height>
+    <height>496</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>180</y>
+     <y>250</y>
      <width>371</width>
-     <height>371</height>
+     <height>221</height>
     </rect>
    </property>
    <property name="font">
@@ -28,639 +28,15 @@
     </font>
    </property>
    <property name="title">
-    <string>モータ情報</string>
+    <string>動作情報</string>
    </property>
-   <widget class="QGroupBox" name="leftMotorGB">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>40</y>
-      <width>101</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="title">
-     <string>台車左側</string>
-    </property>
-    <widget class="QCheckBox" name="motor1LeftCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor2LeftCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ2</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor3LeftCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ3</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor4LeftCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ4</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor5LeftCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>100</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ5</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor6Left">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ6</string>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor1LeftWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>20</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor2LeftWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>40</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor3LeftWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>60</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor4LeftWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>80</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor5LeftWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>100</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor6LeftWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>120</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="rightMotorGB">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>40</y>
-      <width>101</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="title">
-     <string>台車右側</string>
-    </property>
-    <widget class="QCheckBox" name="motor1RightCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor2RightCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ2</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor3RightCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ3</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor4RightCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ4</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor5RightCB">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>100</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ5</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor6Right">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ6</string>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor1RightWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>20</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor2RightWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>40</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor3RightWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>60</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor4RightWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>80</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor5RighttWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>100</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor6LeftWidget_2" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>120</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="indi2MotorGB">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>220</y>
-      <width>101</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="title">
-     <string>単独2</string>
-    </property>
-    <widget class="QCheckBox" name="motor1Indi2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor2Indi2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ2</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor3Indi2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ3</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor4Indi2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ4</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor5Indi2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>100</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ5</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor6Indi_3">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ6</string>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor1Indi2Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>20</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor2Indi2Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>40</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor3Indi2Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>60</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor4Indi2Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>80</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor5Indi2Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>100</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor6Indi2Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>120</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="indi1MotorGB">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>220</y>
-      <width>101</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="title">
-     <string>単独1</string>
-    </property>
-    <widget class="QCheckBox" name="motor1Indi1">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor2Indi1">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ2</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor3Indi1">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ3</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor4Indi1">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ4</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor5Indi1">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>100</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ5</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="motor6Indi1">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>モータ6</string>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor1Indi1Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>20</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor2Indi1Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>40</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor3Indi1Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>60</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor4Indi1Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>80</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor5Indi1Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>100</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QWidget" name="motor6Indi1Widget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>120</y>
-       <width>12</width>
-       <height>12</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
    <widget class="QGroupBox" name="activeMotorGB">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>130</y>
-      <width>91</width>
-      <height>141</height>
+      <x>40</x>
+      <y>100</y>
+      <width>281</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
@@ -669,13 +45,13 @@
      </font>
     </property>
     <property name="title">
-     <string>動作中</string>
+     <string>動作中のモータ</string>
     </property>
     <widget class="QWidget" name="motor1activeWidget" native="true">
      <property name="geometry">
       <rect>
        <x>67</x>
-       <y>20</y>
+       <y>27</y>
        <width>12</width>
        <height>12</height>
       </rect>
@@ -684,8 +60,8 @@
     <widget class="QWidget" name="motor2activeWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>67</x>
-       <y>40</y>
+       <x>147</x>
+       <y>27</y>
        <width>12</width>
        <height>12</height>
       </rect>
@@ -694,8 +70,8 @@
     <widget class="QWidget" name="motor3activeWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>67</x>
-       <y>60</y>
+       <x>240</x>
+       <y>30</y>
        <width>12</width>
        <height>12</height>
       </rect>
@@ -704,8 +80,8 @@
     <widget class="QWidget" name="motor4activeWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>67</x>
-       <y>80</y>
+       <x>66</x>
+       <y>60</y>
        <width>12</width>
        <height>12</height>
       </rect>
@@ -714,8 +90,8 @@
     <widget class="QWidget" name="motor5activeWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>67</x>
-       <y>100</y>
+       <x>147</x>
+       <y>60</y>
        <width>12</width>
        <height>12</height>
       </rect>
@@ -724,8 +100,8 @@
     <widget class="QWidget" name="motor6activeWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>67</x>
-       <y>120</y>
+       <x>240</x>
+       <y>60</y>
        <width>12</width>
        <height>12</height>
       </rect>
@@ -735,7 +111,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>13</y>
+       <y>20</y>
        <width>50</width>
        <height>24</height>
       </rect>
@@ -750,8 +126,8 @@
     <widget class="QLabel" name="motor2activeLabel">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>33</y>
+       <x>90</x>
+       <y>20</y>
        <width>50</width>
        <height>24</height>
       </rect>
@@ -766,8 +142,8 @@
     <widget class="QLabel" name="motor3activeLabel">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>53</y>
+       <x>183</x>
+       <y>23</y>
        <width>50</width>
        <height>24</height>
       </rect>
@@ -782,8 +158,8 @@
     <widget class="QLabel" name="motor4activeLabel">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>74</y>
+       <x>9</x>
+       <y>54</y>
        <width>50</width>
        <height>24</height>
       </rect>
@@ -798,8 +174,8 @@
     <widget class="QLabel" name="motor5activeLabel">
      <property name="geometry">
       <rect>
-       <x>9</x>
-       <y>94</y>
+       <x>90</x>
+       <y>54</y>
        <width>50</width>
        <height>24</height>
       </rect>
@@ -814,8 +190,8 @@
     <widget class="QLabel" name="motor6activeLabel">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>114</y>
+       <x>183</x>
+       <y>54</y>
        <width>50</width>
        <height>24</height>
       </rect>
@@ -828,30 +204,86 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="motorResetPB">
+   <widget class="QLabel" name="robotStateLabel">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>200</y>
-      <width>51</width>
-      <height>23</height>
+      <x>40</x>
+      <y>30</y>
+      <width>111</width>
+      <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>リセット</string>
+     <string>台車への接続：</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="motorChangePB">
+   <widget class="QWidget" name="robotStateIndicator" native="true">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>160</y>
-      <width>51</width>
-      <height>23</height>
+      <x>310</x>
+      <y>30</y>
+      <width>21</width>
+      <height>21</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QLabel" name="robotStateTextLabel">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>30</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>変更</string>
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cameraStateLabel">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>60</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>カメラへの接続：</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cameraStateTextLabel">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>60</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -859,7 +291,7 @@
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>70</y>
+     <y>10</y>
      <width>640</width>
      <height>480</height>
     </rect>
@@ -871,7 +303,7 @@
      <x>10</x>
      <y>20</y>
      <width>371</width>
-     <height>151</height>
+     <height>201</height>
     </rect>
    </property>
    <property name="font">
@@ -1186,6 +618,692 @@
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>台車モータ</string>
+    </attribute>
+    <widget class="QGroupBox" name="leftMotorGB">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>9</y>
+       <width>101</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>台車左側</string>
+     </property>
+     <widget class="QCheckBox" name="motor1LeftCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ1</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor2LeftCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ2</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor3LeftCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ3</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor4LeftCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ4</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor5LeftCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ5</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor6Left">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ6</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor1LeftWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>20</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor2LeftWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>40</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor3LeftWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>60</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor4LeftWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>80</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor5LeftWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>100</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor6LeftWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>120</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="rightMotorGB">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>10</y>
+       <width>101</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>台車右側</string>
+     </property>
+     <widget class="QCheckBox" name="motor1RightCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ1</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor2RightCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ2</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor3RightCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ3</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor4RightCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ4</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor5RightCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ5</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor6Right">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ6</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor1RightWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>20</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor2RightWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>40</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor3RightWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>60</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor4RightWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>80</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor5RighttWidget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>100</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor6LeftWidget_2" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>120</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="motorChangePB">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>50</y>
+       <width>51</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>変更</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="motorResetPB">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>80</y>
+       <width>51</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>リセット</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>単独モータ</string>
+    </attribute>
+    <widget class="QGroupBox" name="indi2MotorGB">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>10</y>
+       <width>101</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>単独2</string>
+     </property>
+     <widget class="QCheckBox" name="motor1Indi2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ1</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor2Indi2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ2</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor3Indi2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ3</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor4Indi2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ4</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor5Indi2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ5</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor6Indi_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ6</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor1Indi2Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>20</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor2Indi2Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>40</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor3Indi2Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>60</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor4Indi2Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>80</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor5Indi2Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>100</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor6Indi2Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>120</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="indi1MotorGB">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>10</y>
+       <width>101</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>単独1</string>
+     </property>
+     <widget class="QCheckBox" name="motor1Indi1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ1</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor2Indi1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ2</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor3Indi1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ3</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor4Indi1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ4</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor5Indi1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ5</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="motor6Indi1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>モータ6</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor1Indi1Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>20</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor2Indi1Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>40</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor3Indi1Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>60</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor4Indi1Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>80</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor5Indi1Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>100</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="motor6Indi1Widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>120</y>
+        <width>12</width>
+        <height>12</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="motorResetPB_2">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>80</y>
+       <width>51</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>リセット</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="motorChangePB_2">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>50</y>
+       <width>51</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>変更</string>
+     </property>
+    </widget>
+   </widget>
    <widget class="QWidget" name="joyStickTab">
     <attribute name="title">
      <string>ジョイスティック設定</string>
@@ -1483,109 +1601,11 @@
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>70</y>
+     <y>4</y>
      <width>640</width>
      <height>480</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QFrame" name="stateIndicatorFrame">
-   <property name="geometry">
-    <rect>
-     <x>410</x>
-     <y>20</y>
-     <width>621</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QWidget" name="robotStateIndicator" native="true">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>6</y>
-      <width>21</width>
-      <height>21</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="robotStateLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>9</y>
-      <width>61</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>ロボット：</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="cameraStateLabel">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>10</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>カメラ：</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="cameraStateTextLabel">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>8</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="robotStateTextLabel">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>8</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
