@@ -425,6 +425,7 @@ void Dialog::on_connectServerPB_clicked()
 
         // update connect status
         ui->connectServerStateLabel->setText(QString("Connected to server"));
+        ui->robotStateTextLabel->setText(QString("Server:").append(ipAddress));
         ui->robotStateIndicator->setStyleSheet("background-color:blue;");
 
         //----------------------
@@ -469,6 +470,7 @@ void Dialog::on_connectDevicePB_clicked()
 
         // update connect status
         ui->connectDeviceStateTextLabel->setText(QString("Connected to driver"));
+        ui->robotStateTextLabel->setText(QString("Device:").append(roboteqDevicePort));
         ui->robotStateIndicator->setStyleSheet("background-color:blue;");
 
         // enable disconnect button and disable connect buttons
@@ -494,6 +496,7 @@ void Dialog::on_disconnectDevicePB_clicked()
 
     // update connect status
     ui->connectDeviceStateTextLabel->setText(QString("Disconnected from driver"));
+    ui->robotStateTextLabel->setText(QString(""));
     ui->robotStateIndicator->setStyleSheet("background-color:gray;");
 }
 
@@ -511,6 +514,7 @@ void Dialog::on_disconnectServerPB_clicked()
 
     // update connect status
     ui->connectServerStateLabel->setText(QString("Disconnected from server"));
+    ui->robotStateTextLabel->setText(QString(""));
     ui->robotStateIndicator->setStyleSheet("background-color:gray;");
 
 }
