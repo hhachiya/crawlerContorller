@@ -115,14 +115,17 @@ void JoyThread::run()
             double leftMotorValue = 0;
             double rightMotorValue = 0;
 
+            // rotation at the same position
             if(abs(throttleValue) < throttleMaxRotValue){
                 leftMotorValue  = limitValue(-steeringRatio*motorMaxValue,motorMinValue,motorMaxValue);
                 rightMotorValue = limitValue( steeringRatio*motorMaxValue,motorMinValue,motorMaxValue);
+
+            // move
             }else{
                 leftMotorValue  = limitValue((1 + steeringRatio)*throttleValue,motorMinValue,motorMaxValue);
                 rightMotorValue = limitValue((1 - steeringRatio)*throttleValue,motorMinValue,motorMaxValue);
             }
-            qDebug("throttleValue=%f steeringRatio=%f leftMotor=%d rightMotor=%d indiThrottleValue1=%d",throttleValue,steeringRatio,(int)leftMotorValue,(int)rightMotorValue,(int)indiThrottleValue1);
+            qDebug("throttleValue=%f steeringRatio=%f leftMotor=%d rightMotor=%d indiThrottleValue1=%d indiThrottleValue2=%d",throttleValue,steeringRatio,(int)leftMotorValue,(int)rightMotorValue,(int)indiThrottleValue1, (int)indiThrottleValue2);
             //----------------------
 
             //----------------------
@@ -133,7 +136,12 @@ void JoyThread::run()
 
             //----------
             // set velocity value
-            if(abs(indiThrottleValue1) > throttleMaxRotValue || abs(indiThrottleValue2) > throttleMaxRotValue){
+
+
+            //if(!abs(((double)joyInfo.dwYpos - joyMidValue)) && !abs(((double)joyInfo.dwXpos - joyMidValue))){
+            if(abs(((double)joyInfo.dwRpos - joyMidValue)) || abs(((double)joyInfo.dwZpos - joyMidValue))){
+            //if(abs(indiThrottleValue1) > throttleMaxRotValue || abs(indiThrottleValue2) > throttleMaxRotValue){
+            //if(joyInfo.dwButtons&JOY_BUTTON7){
                 // individual motors group 1
                 for(QString id: indi1MotorList)
                     SetCommand("_VAR",id.toInt(),(int)indiThrottleValue1,connectMode);
@@ -143,9 +151,9 @@ void JoyThread::run()
                     SetCommand("_VAR",id.toInt(),(int)indiThrottleValue2,connectMode);
 
             }else{
-                // left motors
+                // left motors, inverse value
                 for(QString id: leftMotorList)
-                    SetCommand("_VAR",id.toInt(),leftMotorValue,connectMode);
+                    SetCommand("_VAR",id.toInt(),-leftMotorValue,connectMode);
 
                 // right motors
                 for(QString id: rightMotorList)

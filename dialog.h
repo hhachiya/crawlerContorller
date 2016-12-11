@@ -36,7 +36,7 @@ public:
 
 private slots:
     // slots for printing joystick values
-    void printJoyValue(const QString &x,const QString &y,const QString &z,const QString &r);
+    void printJoyValue(const QString &x,const QString &y,const QString &z,const QString &r, const QString &bt);
 
 
     /*
@@ -51,8 +51,21 @@ private slots:
     void setAliveMotors(const QStringList &aliveMotorList);
 
     // slots for changing and reseting motor ids
+    void on_indiMotor1CB_currentIndexChanged(int index);
+    void on_indiMotor2CB_currentIndexChanged(int index);
+    void on_indiMotor3CB_currentIndexChanged(int index);
+    void on_indiMotor4CB_currentIndexChanged(int index);
+    void on_indiMotor5CB_currentIndexChanged(int index);
+    void on_indiMotor6CB_currentIndexChanged(int index);
+    void on_indiMotor7CB_currentIndexChanged(int index);
+    void on_indiMotor8CB_currentIndexChanged(int index);
+    void on_indiMotor9CB_currentIndexChanged(int index);
+    void on_indiMotor10CB_currentIndexChanged(int index);
+
+    /*
     void on_motorChangePB_clicked();
     void on_motorResetPB_clicked();
+    */
 
     // slots for connecting/disconnecting to/from server and device
     void on_connectServerPB_clicked();
@@ -62,6 +75,27 @@ private slots:
 
     // slot for camera  
     void on_connectCameraPB_clicked();
+
+
+    void on_leftrightMotor1CB_currentIndexChanged(int index);
+
+    void on_leftrightMotor2CB_currentIndexChanged(int index);
+
+    void on_leftrightMotor3CB_currentIndexChanged(int index);
+
+    void on_leftrightMotor4CB_currentIndexChanged(int index);
+
+    void on_leftrightMotor5CB_currentIndexChanged(int index);
+
+    void on_leftrightMotor6CB_currentIndexChanged(int index);
+
+    void on_leftrightMotor7CB_currentIndexChanged(int index);
+
+    void on_leftrightMotor8CB_currentIndexChanged(int index);
+
+    void on_leftrightMotor9CB_currentIndexChanged(int index);
+
+    void on_leftrightMotor10CB_currentIndexChanged(int index);
 
 private:
     Ui::Dialog *ui;
@@ -96,6 +130,11 @@ private:
 
     // display motor ids
     void displayMotorIDs();
+    bool ondisplyaMotorIDs = true;
+
+    // change motor ids
+    void changeIndiMotorIDs(QString motorID, int index);
+    void changeLeftRightMotorIDs(QString motorID, int index);
 
     // camera interface
     QCamera *camera;

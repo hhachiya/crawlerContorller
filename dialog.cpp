@@ -20,6 +20,7 @@ Dialog::Dialog(QWidget *parent) :
     tmp = settings.value("rightMotors","2").toString();
     rightMotorList = tmp.split(",");
     tmp = settings.value("indi1Motors","2").toString();
+    qDebug() << tmp;
     indi1MotorList = tmp.split(",");
     tmp = settings.value("indi2Motors","2").toString();
     indi2MotorList = tmp.split(",");
@@ -149,12 +150,13 @@ void Dialog::on_connectCameraPB_clicked()
     }
 }
 
-void Dialog::printJoyValue(const QString &x, const QString &y, const QString &z, const QString &r)
+void Dialog::printJoyValue(const QString &x, const QString &y, const QString &z, const QString &r, const QString &bt)
 {
     ui->joyXText->setText(x);
     ui->joyYText->setText(y);
     ui->joyZText->setText(z);
     ui->joyRText->setText(r);
+    ui->joyBTText->setText(bt);
 }
 
 /*
@@ -188,6 +190,477 @@ Dialog::~Dialog()
     delete ui;
 }
 
+
+// slots for sending motor alive motor list
+void Dialog::setAliveMotors(const QStringList &aliveMotorList)
+{
+    this->aliveMotorList = aliveMotorList;
+
+    qDebug() << "aliveMotorList:" << aliveMotorList.size();
+
+    // displaying motor ids
+    displayMotorIDs();
+}
+
+void Dialog::displayMotorIDs()
+{
+    //----------------------
+    // left and right motor id, widget, combobox
+    QList<QWidget *> leftrightMotorWidgets = ui->leftrightMotorTab->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    QList<QComboBox *> leftrightMotorCBs = ui->leftrightMotorTab->findChildren<QComboBox *>();
+
+    // set alive motors on widget
+    if(aliveMotorList.size())
+       for(QString id: aliveMotorList){
+            leftrightMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+       }
+
+    // set selected motors on combobox
+    ondisplyaMotorIDs = false;
+    for(QString id: leftMotorList){
+        qDebug() << "left:" << id;
+        leftrightMotorCBs[id.toInt()-1]->setCurrentIndex(1);
+    }
+
+    for(QString id: rightMotorList){
+        qDebug() << "right:" << id;
+        leftrightMotorCBs[id.toInt()-1]->setCurrentIndex(2);
+    }
+
+    ondisplyaMotorIDs = true;
+    //----------------------
+
+    /*
+    //----------------------
+    // left motor id, widget, checkbox
+    QList<QWidget *> leftMotorWidgets = ui->leftMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    QList<QCheckBox *> leftMotorCBs = ui->leftMotorGB->findChildren<QCheckBox *>();
+
+    // reset checkbox
+    for(int i=0;i<leftMotorCBs.size();i++)
+        leftMotorCBs[i]->setChecked(false);
+
+    // set checkbox and widget
+    if(aliveMotorList.size())
+       for(QString id: aliveMotorList){
+            leftMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+       }
+
+    if(leftMotorList.size())
+       for(QString id: leftMotorList){
+           qDebug() << "leftMotor:" << id.toInt()-1;
+            leftMotorCBs[id.toInt()-1]->setChecked(true);
+       }
+    //----------------------
+
+    //----------------------
+    // right motor id, widget, checkbox
+    QList<QWidget *> rightMotorWidgets = ui->rightMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    QList<QCheckBox *> rightMotorCBs = ui->rightMotorGB->findChildren<QCheckBox *>();
+
+    // reset checkbox
+    for(int i=0;i<rightMotorCBs.size();i++)
+        rightMotorCBs[i]->setChecked(false);
+
+    // set checkbox and widget
+    if(aliveMotorList.size())
+        for(QString id: aliveMotorList){
+            rightMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+        }
+
+    if(rightMotorList.size())
+        for(QString id: rightMotorList){
+            rightMotorCBs[id.toInt()-1]->setChecked(true);
+        }
+    //----------------------
+    */
+
+    //----------------------
+    // individual motor id, widget, combobox
+    QList<QWidget *> indiMotorWidgets = ui->indiMotorTab->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    QList<QComboBox *> indiMotorCBs = ui->indiMotorTab->findChildren<QComboBox *>();
+
+    // set alive motors on widget
+    if(aliveMotorList.size())
+       for(QString id: aliveMotorList){
+            indiMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+       }
+
+    // set selected motors on combobox
+    ondisplyaMotorIDs = false;
+    for(QString id: indi1MotorList){
+        qDebug() << "indi1:" << id;
+        indiMotorCBs[id.toInt()-1]->setCurrentIndex(1);
+    }
+
+    for(QString id: indi2MotorList){
+        qDebug() << "indi2:" << id;
+        indiMotorCBs[id.toInt()-1]->setCurrentIndex(2);
+    }
+
+    ondisplyaMotorIDs = true;
+    //----------------------
+
+
+    /*
+    //----------------------
+    // individual motor id, group1, widget, checkbox
+    QList<QWidget *> indi1MotorWidgets = ui->indi1MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    QList<QCheckBox *> indi1MotorCBs = ui->indi1MotorGB->findChildren<QCheckBox *>();
+
+
+    // reset checkbox
+    for(int i=0;i<indi1MotorCBs.size();i++)
+        indi1MotorCBs[i]->setChecked(false);
+
+    // set checkbox and widget
+    if(aliveMotorList.size())
+        for(QString id: aliveMotorList){
+            indi1MotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+        }
+
+    if(indi1MotorList.size())
+        for(QString id: indi1MotorList){
+            indi1MotorCBs[id.toInt()-1]->setChecked(true);
+        }
+
+    //----------------------
+
+    //----------------------
+    // individual motor id, group2, widget, checkbox
+    QList<QWidget *> indi2MotorWidgets = ui->indi2MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
+    QList<QCheckBox *> indi2MotorCBs = ui->indi2MotorGB->findChildren<QCheckBox *>();
+
+    // reset checkbox
+    for(int i=0;i<indi2MotorCBs.size();i++)
+        indi2MotorCBs[i]->setChecked(false);
+
+    // set checkbox and widget
+    if(aliveMotorList.size())
+        for(QString id: aliveMotorList){
+            indi2MotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
+        }
+
+    if(indi2MotorList.size())
+        for(QString id: indi2MotorList){
+            indi2MotorCBs[id.toInt()-1]->setChecked(true);
+        }
+    //----------------------
+    */
+}
+
+void Dialog::on_connectServerPB_clicked()
+{
+    //----------------------
+    // Socket
+    tcpSocket = new QTcpSocket;
+    tcpSocket->connectToHost(ipAddress,controlPort);
+    bool status=tcpSocket->waitForConnected();
+    //----------------------
+
+    if (!status){
+        qDebug("Error connecting to server: %d.\n",status);
+        ui->connectServerStateLabel->setText(QString("Error connecting to server:").append(QString::number(status)));
+    }else{
+        tcpSocket->moveToThread(&myJoyThread); //tcpSocket in main thread is moved to JoyThread (could be accessed from run())
+
+        // update connect status
+        ui->connectServerStateLabel->setText(QString("Connected to server"));
+        ui->robotStateTextLabel->setText(QString("Server:").append(ipAddress));
+        ui->robotStateIndicator->setStyleSheet("background-color:blue;");
+
+        //----------------------
+        // Thread
+        // stop joystick thread
+        if(myJoyThread.isRunning())
+            myJoyThread.stop();
+
+        // start joystick thread with joystick id
+        myJoyThread.startServerJoyThread(ui->joyComboBox->currentIndex(),tcpSocket,leftMotorList,rightMotorList,indi1MotorList,indi2MotorList,numMotors);
+        //----------------------
+
+        // enable disconnect button and disable connect buttons
+        ui->connectServerPB->setVisible(false);
+        ui->disconnectServerPB->setVisible(true);
+        ui->connectDevicePB->setVisible(false);
+        ui->disconnectDevicePB->setVisible(false);
+    }
+}
+
+
+void Dialog::on_connectDevicePB_clicked()
+{
+    //----------------------
+    // RoboteQ
+    roboteqDevice = new RoboteqDevice;
+    roboteqDevicePort = ui->serialComboBox->currentText();
+    int status = roboteqDevice->Connect(QString("\\\\.\\").append(roboteqDevicePort).toStdString());
+
+    if (status != RQ_SUCCESS)
+    {
+        qDebug("Error connecting to device: %d.\n",status);
+        ui->connectDeviceStateTextLabel->setText(QString("Error connecting to device:").append(QString::number(status)));
+    }else{
+        // stop joystick thread
+        if(myJoyThread.isRunning())
+            myJoyThread.stop();
+
+        // start joystick thread with joystick id
+        myJoyThread.startDeviceJoyThread(ui->joyComboBox->currentIndex(),roboteqDevice,leftMotorList,rightMotorList,indi1MotorList,indi2MotorList,numMotors);
+        //----------------------
+
+        // update connect status
+        ui->connectDeviceStateTextLabel->setText(QString("Connected to driver"));
+        ui->robotStateTextLabel->setText(QString("Device:").append(roboteqDevicePort));
+        ui->robotStateIndicator->setStyleSheet("background-color:blue;");
+
+        // enable disconnect button and disable connect buttons
+        ui->connectServerPB->setVisible(false);
+        ui->disconnectServerPB->setVisible(false);
+        ui->connectDevicePB->setVisible(false);
+        ui->disconnectDevicePB->setVisible(true);
+    }
+    //----------------------
+}
+
+void Dialog::on_disconnectDevicePB_clicked()
+{
+    // stop joystick thread
+    myJoyThread.stop();
+
+    // enable connect buttons
+    ui->connectDevicePB->setVisible(true);
+    ui->connectServerPB->setVisible(true);
+
+    // disable disconnect button
+    ui->disconnectDevicePB->setVisible(false);
+
+    // update connect status
+    ui->connectDeviceStateTextLabel->setText(QString("Disconnected from driver"));
+    ui->robotStateTextLabel->setText(QString(""));
+    ui->robotStateIndicator->setStyleSheet("background-color:gray;");
+}
+
+void Dialog::on_disconnectServerPB_clicked()
+{
+    // stop joystick thread
+    myJoyThread.stop();
+
+    // enable connect buttons
+    ui->connectDevicePB->setVisible(true);
+    ui->connectServerPB->setVisible(true);
+
+    // disable disconnect button
+    ui->disconnectServerPB->setVisible(false);
+
+    // update connect status
+    ui->connectServerStateLabel->setText(QString("Disconnected from server"));
+    ui->robotStateTextLabel->setText(QString(""));
+    ui->robotStateIndicator->setStyleSheet("background-color:gray;");
+
+}
+
+void Dialog::on_indiMotor1CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(1), index);
+}
+
+void Dialog::on_indiMotor2CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(2), index);
+}
+
+void Dialog::on_indiMotor3CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(3), index);
+}
+
+void Dialog::on_indiMotor4CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(4), index);
+}
+
+void Dialog::on_indiMotor5CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(5), index);
+}
+
+void Dialog::on_indiMotor6CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(6), index);
+}
+
+void Dialog::on_indiMotor7CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(7), index);
+}
+
+void Dialog::on_indiMotor8CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(8), index);
+}
+
+void Dialog::on_indiMotor9CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(9), index);
+}
+
+void Dialog::on_indiMotor10CB_currentIndexChanged(int index)
+{
+    changeIndiMotorIDs(QString::number(10), index);
+}
+
+void Dialog::on_leftrightMotor1CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(1), index);
+}
+
+void Dialog::on_leftrightMotor2CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(2), index);
+}
+
+void Dialog::on_leftrightMotor3CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(3), index);
+}
+
+void Dialog::on_leftrightMotor4CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(4), index);
+}
+
+void Dialog::on_leftrightMotor5CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(5), index);
+}
+
+void Dialog::on_leftrightMotor6CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(6), index);
+}
+
+void Dialog::on_leftrightMotor7CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(7), index);
+}
+
+void Dialog::on_leftrightMotor8CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(8), index);
+}
+
+void Dialog::on_leftrightMotor9CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(9), index);
+}
+
+void Dialog::on_leftrightMotor10CB_currentIndexChanged(int index)
+{
+    changeLeftRightMotorIDs(QString::number(10), index);
+}
+
+void Dialog::changeLeftRightMotorIDs(QString motorID, int index){
+    qDebug() << "index=" << index << " motorID=" << motorID << "ondisplyaMotorIDs=" << ondisplyaMotorIDs;
+
+    if(ondisplyaMotorIDs){
+        leftMotorList.removeAll(motorID);
+        rightMotorList.removeAll(motorID);
+
+        switch(index){
+            case 1:
+                leftMotorList.append(motorID);
+                break;
+
+            case 2:
+                rightMotorList.append(motorID);
+                break;
+        }
+
+        //----------------------
+        // save parameter config
+        QString leftMotorIDs;
+        for(QString motorID: leftMotorList){
+            if(leftMotorIDs.length()==0)
+                leftMotorIDs = motorID;
+            else
+                leftMotorIDs = leftMotorIDs + "," + motorID;
+        }
+
+        QString rightMotorIDs;
+        for(QString motorID: rightMotorList){
+            if(rightMotorIDs.length()==0)
+                rightMotorIDs = motorID;
+            else
+                rightMotorIDs = rightMotorIDs + "," + motorID;
+        }
+
+        qDebug() << leftMotorIDs;
+        qDebug() << rightMotorIDs;
+
+        // motor section
+        QSettings settings(configPath,QSettings::IniFormat);
+        settings.beginGroup("motor");
+        settings.setValue("leftMotors",leftMotorIDs);
+        settings.setValue("rightMotors",rightMotorIDs);
+        //----------------------
+
+        // change motor ids
+        myJoyThread.changeMotorIDs(leftMotorList,rightMotorList,indi1MotorList, indi2MotorList);
+    }
+}
+
+void Dialog::changeIndiMotorIDs(QString motorID, int index){
+    qDebug() << "index=" << index << " motorID=" << motorID << "ondisplyaMotorIDs=" << ondisplyaMotorIDs;
+
+    if(ondisplyaMotorIDs){
+        indi1MotorList.removeAll(motorID);
+        indi2MotorList.removeAll(motorID);
+
+        switch(index){
+            case 1:
+                indi1MotorList.append(motorID);
+                break;
+
+            case 2:
+                indi2MotorList.append(motorID);
+                break;
+        }
+
+        //----------------------
+        // save parameter config
+        QString indi1MotorIDs;
+        for(QString motorID: indi1MotorList){
+            if(indi1MotorIDs.length()==0)
+                indi1MotorIDs = motorID;
+            else
+                indi1MotorIDs = indi1MotorIDs + "," + motorID;
+        }
+
+        QString indi2MotorIDs;
+        for(QString motorID: indi2MotorList){
+            if(indi2MotorIDs.length()==0)
+                indi2MotorIDs = motorID;
+            else
+                indi2MotorIDs = indi2MotorIDs + "," + motorID;
+        }
+
+        qDebug() << indi1MotorIDs;
+        qDebug() << indi2MotorIDs;
+
+        // motor section
+        QSettings settings(configPath,QSettings::IniFormat);
+        settings.beginGroup("motor");
+        settings.setValue("indi1Motors",indi1MotorIDs);
+        settings.setValue("indi2Motors",indi2MotorIDs);
+        //----------------------
+
+        // change motor ids
+        myJoyThread.changeMotorIDs(leftMotorList,rightMotorList,indi1MotorList, indi2MotorList);
+    }
+}
+
+/*
 void Dialog::on_motorChangePB_clicked()
 {
     QString motorID;
@@ -308,215 +781,6 @@ void Dialog::on_motorResetPB_clicked()
     // displaying motor ids
     displayMotorIDs();
 }
-
-// slots for sending motor alive motor list
-void Dialog::setAliveMotors(const QStringList &aliveMotorList)
-{
-    this->aliveMotorList = aliveMotorList;
-
-    qDebug() << "aliveMotorList:" << aliveMotorList.size();
-
-    // displaying motor ids
-    displayMotorIDs();
-}
-
-void Dialog::displayMotorIDs()
-{
-    //----------------------
-    // left motor id, widget, checkbox
-    QList<QWidget *> leftMotorWidgets = ui->leftMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
-    QList<QCheckBox *> leftMotorCBs = ui->leftMotorGB->findChildren<QCheckBox *>();
-
-    // reset checkbox
-    for(int i=0;i<leftMotorCBs.size();i++)
-        leftMotorCBs[i]->setChecked(false);
-
-    // set checkbox and widget
-    if(aliveMotorList.size())
-       for(QString id: aliveMotorList){
-            leftMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
-       }
-
-    if(leftMotorList.size())
-       for(QString id: leftMotorList){
-           qDebug() << "leftMotor:" << id.toInt()-1;
-            leftMotorCBs[id.toInt()-1]->setChecked(true);
-       }
-    //----------------------
-
-    //----------------------
-    // right motor id, widget, checkbox
-    QList<QWidget *> rightMotorWidgets = ui->rightMotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
-    QList<QCheckBox *> rightMotorCBs = ui->rightMotorGB->findChildren<QCheckBox *>();
-
-    // reset checkbox
-    for(int i=0;i<rightMotorCBs.size();i++)
-        rightMotorCBs[i]->setChecked(false);
-
-    // set checkbox and widget
-    if(aliveMotorList.size())
-        for(QString id: aliveMotorList){
-            rightMotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
-        }
-
-    if(rightMotorList.size())
-        for(QString id: rightMotorList){
-            rightMotorCBs[id.toInt()-1]->setChecked(true);
-        }
-    //----------------------
-
-    //----------------------
-    // individual motor id, group1, widget, checkbox
-    QList<QWidget *> indi1MotorWidgets = ui->indi1MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
-    QList<QCheckBox *> indi1MotorCBs = ui->indi1MotorGB->findChildren<QCheckBox *>();
-
-    // reset checkbox
-    for(int i=0;i<indi1MotorCBs.size();i++)
-        indi1MotorCBs[i]->setChecked(false);
-
-    // set checkbox and widget
-    if(aliveMotorList.size())
-        for(QString id: aliveMotorList){
-            indi1MotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
-        }
-
-    if(indi1MotorList.size())
-        for(QString id: indi1MotorList){
-            indi1MotorCBs[id.toInt()-1]->setChecked(true);
-        }
-    //----------------------
-
-    //----------------------
-    // individual motor id, group2, widget, checkbox
-    QList<QWidget *> indi2MotorWidgets = ui->indi2MotorGB->findChildren<QWidget *>(QRegularExpression(".*Widget"));
-    QList<QCheckBox *> indi2MotorCBs = ui->indi2MotorGB->findChildren<QCheckBox *>();
-
-    // reset checkbox
-    for(int i=0;i<indi2MotorCBs.size();i++)
-        indi2MotorCBs[i]->setChecked(false);
-
-    // set checkbox and widget
-    if(aliveMotorList.size())
-        for(QString id: aliveMotorList){
-            indi2MotorWidgets[id.toInt()-1]->setStyleSheet("background-color:blue;");
-        }
-
-    if(indi2MotorList.size())
-        for(QString id: indi2MotorList){
-            indi2MotorCBs[id.toInt()-1]->setChecked(true);
-        }
-    //----------------------
-}
-
-void Dialog::on_connectServerPB_clicked()
-{
-    //----------------------
-    // Socket
-    tcpSocket = new QTcpSocket;
-    tcpSocket->connectToHost(ipAddress,controlPort);
-    bool status=tcpSocket->waitForConnected();
-    //----------------------
-
-    if (!status){
-        qDebug("Error connecting to server: %d.\n",status);
-        ui->connectServerStateLabel->setText(QString("Error connecting to server:").append(QString::number(status)));
-    }else{
-        tcpSocket->moveToThread(&myJoyThread); //tcpSocket in main thread is moved to JoyThread (could be accessed from run())
-
-        // update connect status
-        ui->connectServerStateLabel->setText(QString("Connected to server"));
-        ui->robotStateTextLabel->setText(QString("Server:").append(ipAddress));
-        ui->robotStateIndicator->setStyleSheet("background-color:blue;");
-
-        //----------------------
-        // Thread
-        // stop joystick thread
-        if(myJoyThread.isRunning())
-            myJoyThread.stop();
-
-        // start joystick thread with joystick id
-        myJoyThread.startServerJoyThread(ui->joyComboBox->currentIndex(),tcpSocket,leftMotorList,rightMotorList,indi1MotorList,indi2MotorList,numMotors);
-        //----------------------
-
-        // enable disconnect button and disable connect buttons
-        ui->connectServerPB->setVisible(false);
-        ui->disconnectServerPB->setVisible(true);
-        ui->connectDevicePB->setVisible(false);
-        ui->disconnectDevicePB->setVisible(false);
-    }
-}
-
-
-void Dialog::on_connectDevicePB_clicked()
-{
-    //----------------------
-    // RoboteQ
-    roboteqDevice = new RoboteqDevice;
-    roboteqDevicePort = ui->serialComboBox->currentText();
-    int status = roboteqDevice->Connect(QString("\\\\.\\").append(roboteqDevicePort).toStdString());
-
-    if (status != RQ_SUCCESS)
-    {
-        qDebug("Error connecting to device: %d.\n",status);
-        ui->connectDeviceStateTextLabel->setText(QString("Error connecting to device:").append(QString::number(status)));
-    }else{
-        // stop joystick thread
-        if(myJoyThread.isRunning())
-            myJoyThread.stop();
-
-        // start joystick thread with joystick id
-        myJoyThread.startDeviceJoyThread(ui->joyComboBox->currentIndex(),roboteqDevice,leftMotorList,rightMotorList,indi1MotorList,indi2MotorList,numMotors);
-        //----------------------
-
-        // update connect status
-        ui->connectDeviceStateTextLabel->setText(QString("Connected to driver"));
-        ui->robotStateTextLabel->setText(QString("Device:").append(roboteqDevicePort));
-        ui->robotStateIndicator->setStyleSheet("background-color:blue;");
-
-        // enable disconnect button and disable connect buttons
-        ui->connectServerPB->setVisible(false);
-        ui->disconnectServerPB->setVisible(false);
-        ui->connectDevicePB->setVisible(false);
-        ui->disconnectDevicePB->setVisible(true);
-    }
-    //----------------------
-}
-
-void Dialog::on_disconnectDevicePB_clicked()
-{
-    // stop joystick thread
-    myJoyThread.stop();
-
-    // enable connect buttons
-    ui->connectDevicePB->setVisible(true);
-    ui->connectServerPB->setVisible(true);
-
-    // disable disconnect button
-    ui->disconnectDevicePB->setVisible(false);
-
-    // update connect status
-    ui->connectDeviceStateTextLabel->setText(QString("Disconnected from driver"));
-    ui->robotStateTextLabel->setText(QString(""));
-    ui->robotStateIndicator->setStyleSheet("background-color:gray;");
-}
-
-void Dialog::on_disconnectServerPB_clicked()
-{
-    // stop joystick thread
-    myJoyThread.stop();
-
-    // enable connect buttons
-    ui->connectDevicePB->setVisible(true);
-    ui->connectServerPB->setVisible(true);
-
-    // disable disconnect button
-    ui->disconnectServerPB->setVisible(false);
-
-    // update connect status
-    ui->connectServerStateLabel->setText(QString("Disconnected from server"));
-    ui->robotStateTextLabel->setText(QString(""));
-    ui->robotStateIndicator->setStyleSheet("background-color:gray;");
-
-}
+*/
 
 
